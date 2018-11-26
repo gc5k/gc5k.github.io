@@ -1,3 +1,7 @@
 # Resequencing studies
 
 This is a technical review for resequencing studies.
+
+## Technical review
+
+## Drop HWE

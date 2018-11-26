@@ -1,6 +1,5 @@
 # Applications
 
-
 ## Example 1: Arabdiopsis
 
 ## Example 2: ALS
