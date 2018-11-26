@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="simulation.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="resequencing-studies.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -115,76 +115,18 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">EigenGWAS theory and application</h1>
-<p class="author"><em>Guo-Bo Chen [<a href="mailto:chen.guobo@foxmail.com" class="email">chen.guobo@foxmail.com</a>]</em></p>
-<p class="date"><em>2018-11-26</em></p>
-</div>
-<div id="eigengwas-basis" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> EigenGWAS basis</h1>
-<p>This is project dedicated to EigenGWAS, linear model analysis for eigenvectors on genomic data, which can be represented as <span class="math inline">\(\mathbf{X}\)</span> the <span class="math inline">\(n \times m\)</span> genotype matrix. Without loss of generality, <span class="math inline">\(x_j\)</span> for the <span class="math inline">\(i^{th}\)</span> locus is for a biallic locus.</p>
-<div id="genetic-relatedness-matrix-mathbfg" class="section level2">
-<h2><span class="header-section-number">1.1</span> Genetic relatedness matrix <span class="math inline">\(\mathbf{G}\)</span></h2>
-<p>We can construct the <span class="math inline">\(n\times\)</span> genetic relatedness matrix as
-<span class="math inline">\(\mathbf{X}\)</span> the <span class="math inline">\(n\times m\)</span> genotype matrix. We can construct the <span class="math inline">\(n\times\)</span> genetic relatedness matrix as</p>
-<p><span class="math display">\[\mathbf{G}=\tilde{\mathbf{X}}\tilde{\mathbf{X}}^T\]</span>
-in which <span class="math inline">\(\tilde{\mathbf{X}}\)</span> is the scaled form of <span class="math inline">\(\mathbf{X}\)</span>
-However, upon the mating type of the species, <span class="math inline">\(\mathbf{G}\)</span> should be constructly differently. For a random mating population, <span class="math inline">\(x_l\)</span> is scaled as <span class="math inline">\(\tilde{x}_l=\frac{x_l-2p_l}{\sqrt{2p_lq_l}}\)</span>, whereas for inbred population, <span class="math inline">\(\tilde{x}_l=\frac{x_l-2p_l}{\sqrt{4p_lq_l}}\)</span>. <span class="math inline">\(q_l\)</span> equals <span class="math inline">\(1-p_l\)</span>.</p>
-<p>So for a pair of individuals <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>,
-<span class="math display">\[G_{ij}=\frac{1}{\tilde{m}}\sum_l^{\tilde{m}}\frac{(x_{il}-2p_l)(x_{jl}-2p_l)}{2(1+F)p_iq_i}\]</span>
-in which <span class="math inline">\(\tilde{m}\)</span> is the number of genotyped loci at both individal <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span>, and <span class="math inline">\(F\)</span>, 0 for random mating population and 1 for inbred population, inbreeding coefficient.</p>
-<div id="statistical-properties-of-mathbfg" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Statistical properties of <span class="math inline">\(\mathbf{G}\)</span></h3>
-<p>Given <span class="math inline">\(\mathbf{G}\)</span>, we can define two very useful population parameters, <span class="math inline">\(n_e\)</span>, the effective population size, and <span class="math inline">\(m_e\)</span>, the effective number of markers.</p>
-<p>Let <span class="math inline">\(\mathbf{G}_o\)</span> denote the off diagonal elements of <span class="math inline">\(\mathbf{G}\)</span>, then we have
-<span class="math display">\[n_e=\frac{-1}{mean(\mathbf{G}_o)}\]</span>
-and <span class="math display">\[m_e=\frac{1}{Var(\mathbf{G}_o)}\]</span></p>
-<p><span class="math inline">\(n_e\)</span> reflects true relatedness between any pair of samples and <span class="math inline">\(m_e\)</span> can be written as <span class="math display">\[m_e=\frac{\sum_{i=1}^m\sum_{j=1}^m\rho_{ij}}{m^2}\]</span></p>
-</div>
-</div>
-<div id="eigengwas-analysis" class="section level2">
-<h2><span class="header-section-number">1.2</span> EigenGWAS analysis</h2>
-<p>Given eigenanalysis of <span class="math inline">\(\mathbf{X}\)</span>, we have <span class="math inline">\(\mathbf{E\Lambda E}\)</span>, in which <span class="math inline">\(\mathbf{\Lambda}\)</span> is the diagonal matrix for eigenvalues and <span class="math inline">\(\mathbf{E}_k\)</span> is the eigenvector associated with the <span class="math inline">\(k^{th}\)</span> largest eigenvalue, and regress <span class="math inline">\(\mathbf{E}_k\)</span>, the <span class="math inline">\(k^{th}\)</span> column, on each marker, we have the model below</p>
-<p><span class="math display">\[\mathbf{E}_k=a+\beta_j\mathbf{x}_i+e\]</span> {eq1}</p>
-<p>It consequently generates <span class="math inline">\(m\)</span> estimates of <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\sigma_j\)</span>, and their corresponding <span class="math inline">\(p\)</span> values. Given the <span class="math inline">\(m\)</span> <span class="math inline">\(p\)</span> values, the conventional
-Manhattan plot can be made.</p>
-<div id="population-structure-lambda_gc" class="section level3">
-<h3><span class="header-section-number">1.2.1</span> Population structure <span class="math inline">\(\lambda_{GC}\)</span></h3>
-<p>We can define <span class="math inline">\(\lambda_{GC}=\chi^2_{1,median(p)}/\chi^2_{1,0.5}\)</span>, in which <span class="math inline">\(\chi^2_{1,0.5}=0.455\)</span>. We further use subscript <span class="math inline">\(k\)</span> to denote <span class="math inline">\(\lambda_{GC_k}\)</span> the one that is estimated from <span class="math inline">\(\mathbf{E}_k\)</span>.</p>
-<p>When the population structure is completely driven by genetic drift, <span class="math inline">\(\lambda_{GC_k} \approx \Lambda_k\)</span>.</p>
-<p>After technical correction, correspondingly <span class="math inline">\(\tilde\chi^2_1=\chi^2_1/\lambda_{GC}\)</span>, a reduce of the test statistic compared to its original form.</p>
-</div>
-<div id="threshold-for-eigengwas" class="section level3">
-<h3><span class="header-section-number">1.2.2</span> Threshold for EigenGWAS</h3>
-<p>As shown above, EigenGWAS
-Bonferroni correction, such as <span class="math inline">\(\alpha/m\)</span>, can be used to set the threshold at the significance level <span class="math inline">\(\alpha\)</span>, such as <span class="math inline">\(\alpha=0.05\)</span>.</p>
-</div>
-</div>
-<div id="connection-to-svd" class="section level2">
-<h2><span class="header-section-number">1.3</span> Connection to SVD</h2>
-<p>SVD of <span class="math inline">\(\mathbf{X}=\mathbf{U\Lambda V}\)</span>, the EigenGWAS model can be written as <span class="math inline">\(\mathbf{V}_k=\frac{\mathbf{XU}_k}{\Lambda_k}\)</span>. However, in this transformation, eigenvalue is involved, as would be show. It will reduce the statistical power for EigenGWAS.</p>
-</div>
-<div id="intepretation" class="section level2">
-<h2><span class="header-section-number">1.4</span> Intepretation</h2>
-<p>The EigenGWAS model resembles the Newtown’s first and the second law for classical mechanics. The first law states that</p>
-<blockquote>
-<p>In an inertial frame of reference, an object either remains at rest or continues to move at a constant velocity, unless acted upon by a force</p>
-</blockquote>
-<p>Analogously, in population genetics, it can be seemed as genetic drift that is constantly driving the a pair of population divergent apart from each other, and its velocity can be quantified by a binomial distribution as <span class="math inline">\(\frac{pq}{\tilde{n}_e}\)</span>.</p>
-<blockquote>
-<p>In an inertial frame of reference, the vector sum of the forces F on an object is equal to the mass m of that object multiplied by the acceleration a of the object: F = ma.</p>
-</blockquote>
-<p>Analogously, the selection can drive a genomic region run against its reference population at a velocity greater than <span class="math inline">\(\frac{pq}{\tilde{n}_e}\)</span>.</p>
+<div id="simulation" class="section level1">
+<h1><span class="header-section-number">Chapter 2</span> Simulation</h1>
+<p>Simulation studies for EigenGWAS.</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="simulation.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="resequencing-studies.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
