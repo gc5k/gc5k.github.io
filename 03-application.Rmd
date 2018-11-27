@@ -14,4 +14,4 @@
 
 ## Example 7: BGI 140K
 
-## other neo data
+## Other NEO data
