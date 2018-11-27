@@ -1,5 +1,0 @@
-# Simulation
-
-## PCA
-
-## $F_{st}$
