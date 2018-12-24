@@ -25,7 +25,7 @@
 <meta name="author" content="Guo-Bo Chen [chen.guobo@foxmail.com]">
 
 
-<meta name="date" content="2018-12-13">
+<meta name="date" content="2018-12-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -161,8 +161,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="simulating-population-structure.html"><a href="simulating-population-structure.html#genetic-drift"><i class="fa fa-check"></i><b>4.1</b> Genetic drift</a></li>
 <li class="chapter" data-level="4.2" data-path="simulating-population-structure.html"><a href="simulating-population-structure.html#discrete-populations"><i class="fa fa-check"></i><b>4.2</b> Discrete populations</a></li>
 <li class="chapter" data-level="4.3" data-path="simulating-population-structure.html"><a href="simulating-population-structure.html#admixture-populations"><i class="fa fa-check"></i><b>4.3</b> Admixture populations</a></li>
-<li class="chapter" data-level="4.4" data-path="simulating-population-structure.html"><a href="simulating-population-structure.html#wishart-distribution"><i class="fa fa-check"></i><b>4.4</b> Wishart distribution</a></li>
-<li class="chapter" data-level="4.5" data-path="simulating-population-structure.html"><a href="simulating-population-structure.html#homo-heteogeneous-f_st"><i class="fa fa-check"></i><b>4.5</b> Homo &amp; Heteogeneous <span class="math inline">\(F_st\)</span></a></li>
+<li class="chapter" data-level="4.4" data-path="simulating-population-structure.html"><a href="simulating-population-structure.html#homo-heteogeneous-f_st"><i class="fa fa-check"></i><b>4.4</b> Homo &amp; Heteogeneous <span class="math inline">\(F_{st}\)</span></a></li>
+<li class="chapter" data-level="4.5" data-path="simulating-population-structure.html"><a href="simulating-population-structure.html#wishart-distribution"><i class="fa fa-check"></i><b>4.5</b> Wishart distribution</a></li>
 <li class="chapter" data-level="4.6" data-path="simulating-population-structure.html"><a href="simulating-population-structure.html#tracy-widom-distribution"><i class="fa fa-check"></i><b>4.6</b> Tracy-Widom distribution</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="data-analysis.html"><a href="data-analysis.html"><i class="fa fa-check"></i><b>5</b> Data analysis</a><ul>
@@ -215,7 +215,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">EigenGWAS theory and application</h1>
 <p class="author"><em>Guo-Bo Chen [<a href="mailto:chen.guobo@foxmail.com" class="email">chen.guobo@foxmail.com</a>]</em></p>
-<p class="date"><em>2018-12-13</em></p>
+<p class="date"><em>2018-12-24</em></p>
 </div>
 <div id="ch:basis" class="section level1">
 <h1><span class="header-section-number">Chapter 1</span> EigenGWAS basis</h1>
@@ -247,7 +247,7 @@ m_e=\frac{1}{Var(\mathbf{G}_o)}  \tag{1.4}
 \end{equation}\]</span>
 The ratio between <span class="math inline">\(\frac{m_e}{m}\)</span> reflects the average linkage disequilibrium between the any pair of markers, and alternatively <span class="math inline">\(m_e\)</span> can be expressed as</p>
 <p><span class="math display" id="eq:Me2">\[\begin{equation}
-m_e=\frac{\sum_{l_1=1}^m\sum_{l_2=1}^m\rho_{l_1l_2}^2}{m^2}=\bar{\rho}^2 \tag{1.5}
+m_e=\frac{m^2}{\sum_{l_1=1}^m\sum_{l_2=1}^m\rho_{l_1l_2}^2}=\frac{1}{\bar{\rho}^2} \tag{1.5}
 \end{equation}\]</span></p>
 <p>in which <span class="math inline">\(\rho_{l_1l_2}\)</span> is Pearson’s correlation between a pair of SNPs, see Appendix <a href="app-1.html#app:ld">7.1</a>. It is an important parameter to characterize the evolutionary process of a population.</p>
 </div>
